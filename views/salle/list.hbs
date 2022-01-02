@@ -1,0 +1,47 @@
+
+<h3 class="text-center">Salle List</h3>
+<table class="table table-hover"style= "border : 2px solid black; border-collapse: collapse;font-weight: bold;">
+    <thead style="background-color: blueviolet;">
+        <tr>
+            <th>Code</th>
+            <th>Libelle</th>
+            <th>Bloc</th>
+            <th>Etat</th>
+            <th>QR</th>
+            
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each list}}
+        <tr>
+            <td>{{this.code}}</td>
+            <td>{{this.libelle}}</td>
+            <td>{{this.nameBloc}}</td>
+            <td><a href="/occupation/cher/{{this._id}}">occupation</a></td>
+            <td><img src={{this.qrcode}} alt="QR Code Image"></td>
+
+            
+
+            
+            <td>
+                <a href="/salle/{{this._id}}"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></a>
+                <a href="/salle/delete/{{this._id}}" onclick="return confirm('Are you sure to delete this record ?');"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></a>
+            </td>
+        </tr>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.3/dist/JsBarcode.all.min.js"></script>
+<script type="text/javascript">
+		
+			
+			JsBarcode("#barcode", "{{this.libelle}}");
+		
+		
+	</script>
+        {{/each}}
+    </tbody>
+</table>
+
+<center>
+<h3><a class="badge rounded-pill " style="width: 50%;background-color: blueviolet;" href="/salle" ><i class="fa fa-plus"></i> Create New </a> </h3>
+<h3><a class="badge rounded-pill " style="width: 50%;background-color: blueviolet;" href="/bloc/list"><i class="fa fa-list-alt"></i> Bloc List</a></h3></center>

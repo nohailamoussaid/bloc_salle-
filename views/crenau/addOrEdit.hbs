@@ -1,0 +1,23 @@
+<h3>{{viewTitle}}</h3>
+
+<form action="/crenau" method="POST" autocomplete="off">
+    <input type="hidden" name="_id" value="{{crenau._id}}">
+    <div class="form-group">
+        <strong><label>Hr debut</label></strong>
+        <input type="text" class="form-control" name="hrdebut" placeholder="hrdebut " value="{{crenau.hrdebut}}">
+        <div class="text-danger">
+            {{crenau.hrdebutError}}</div>
+    </div>
+    <div class="form-group">
+        <strong></strong><label>Hr fin</label></strong>
+        <input type="text" class="form-control" name="hrfin" placeholder="hrfin" value="{{crenau.hrfin}}">
+        <div class="text-danger">
+            {{crenau.hrfinError}}</div>
+    </div>
+    
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary"><i class="fa fa-database"></i> Submit</button>
+        <a class="btn btn-outline-dark" href="/crenau/list"><i class="fa fa-list-alt"></i> Crenau List</a>
+        
+    </div>
+</form>

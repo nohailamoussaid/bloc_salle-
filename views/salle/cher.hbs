@@ -1,0 +1,27 @@
+<table class="table table-hover"style= "border : 2px solid black; border-collapse: collapse;font-weight: bold;">
+    <thead style="background-color: blueviolet;">
+        <tr>
+            <th>Date</th>
+            <th>Crenau</th>
+            <th>Salle</th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each list}}
+        <tr>
+            <td>{{this.date}}</td>
+            <td>{{this.crenauhr}}</td>
+            <td>{{this.namesalle}}</td>
+            
+
+            
+            
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+<center>
+<h3><a class="badge rounded-pill bg-light" style="width: 50%;" href="/salle" ><i class="fa fa-plus"></i> Create New</a> </h3>
+<h3><a class="badge rounded-pill bg-light" style="width: 50%;" href="/salle/list"><i class="fa fa-list-alt"></i> Bloc List</a></h3></center>

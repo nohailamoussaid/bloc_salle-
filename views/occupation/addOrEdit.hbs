@@ -1,0 +1,35 @@
+<h3>{{viewTitle}}</h3>
+
+<form action="/occupation" method="POST" autocomplete="off">
+    <input type="hidden" name="_id" value="{{occupation._id}}">
+    <div class="form-group">
+        <strong><label>Date</label></strong>
+        <input type="date" class="form-control" name="date" placeholder="date " value="{{occupation.date}}">
+        <div class="text-danger">
+            {{occupation.dateError}}</div>
+    </div>
+    
+    <div class="form-group">
+        <strong><label for="crenau">Crenau : </label></strong>
+            <select  class="form-control"  id="crenau" name="crenau">
+                {{#each crenaus}}
+            <option name={{this._id}} value={{this._id}}>{{this.hrdebut}} to {{this.hrfin}} </option>
+                {{/each}}
+            </select>
+    </div>
+    <div class="form-group">
+        <strong><label for="salle">Salle : </label></strong>
+            <select  class="form-control"  id="salle" name="salle">
+                {{#each salles}}
+            <option name={{this._id}} value={{this._id}}>{{this.libelle}}</option>
+                {{/each}}
+            </select>
+    </div>
+    
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary"><i class="fa fa-database"></i> Submit</button>
+        <a class="btn btn-outline-dark" href="/occupation/list"><i class="fa fa-list-alt"></i> View All</a>
+        
+    </div>
+</form>

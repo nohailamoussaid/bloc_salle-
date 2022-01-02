@@ -1,0 +1,26 @@
+
+<table class="table table-hover"style= "border : 2px solid black; border-collapse: collapse;font-weight: bold;">
+    <thead style="background-color: blueviolet;">
+        <tr>
+            <th>hrdebut</th>
+            <th>hrfin</th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each list}}
+        <tr>
+            <td>{{this.hrdebut}}</td>
+            <td>{{this.hrfin}}</td>
+            
+            <td>
+                <a href="/crenau/{{this._id}}"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></a>
+                <a href="/crenau/delete/{{this._id}}" onclick="return confirm('Are you sure to delete this record ?');"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></a>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+<center>
+<h3><a class="badge rounded-pill bg-light" style="width: 50%;" href="/crenau" ><i class="fa fa-plus"></i> Create New</a> </h3>
