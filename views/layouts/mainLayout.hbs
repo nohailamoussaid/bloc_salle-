@@ -9,39 +9,263 @@
 </head>
 
 
-<body style="background-color: #6a1ec7b4;">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">SalleBlocOccupation</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<body>
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar" style="background-color: #8d65b3;">
+            <div class="sidebar-header" style="margin-top: 30px;">
+                <strong><h3><a href="/dashboard">Occupation Salles</a></h3></strong>
+            </div>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <strong></strong><a class="nav-link" href="/bloc">Bloc <span class="sr-only">(current)</span></a></strong>
-      </li>
-      <li class="nav-item active">
-        <strong><a class="nav-link" href="/salle">Salle <span class="sr-only">(current)</span></a></strong>
-      </li>
-	  <li class="nav-item active">
-        <strong></strong><a class="nav-link" href="/crenau">Crenau <span class="sr-only">(current)</span></a></strong>
-      </li>
-	  <li class="nav-item active">
-        <strong></strong><a class="nav-link" href="/occupation">Occupation <span class="sr-only">(current)</span></a></strong>
-      </li>
+            <ul class="list-unstyled components ">
+                
+                
+                <li class="active">
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-bolt  btn-sm purple-gradient"></i>Bloc</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            <a href="/bloc/list"><i class="fa fa-bars btn-sm purple-gradient"></i>List Bloc</a>
+                        </li>
+                        <li>
+                            <a href="/bloc"><i class="fa fa-plus btn-sm purple-gradient"></i>Add new Bloc</a>
+                        </li>
+                        
+                    </ul>
+                </li>
+                
+                <li>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-bolt  btn-sm purple-gradient"></i>Salles</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        <li>
+                            <a href="/salle/list"><i class="fa fa-bars btn-sm purple-gradient"></i>List Salle</a>
+                        </li>
+                        <li>
+                            <a href="/salle"><i class="fa fa-plus btn-sm purple-gradient"></i>Add new Salle</a>
+                        </li>
+                        
+                    </ul>
+                </li>
+                 <li>
+                    <a href="#occupationSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-bolt  btn-sm purple-gradient"></i>Occupations</a>
+                    <ul class="collapse list-unstyled" id="occupationSubmenu">
+                        <li>
+                            <a href="/occupation/list"><i class="fa fa-bars btn-sm purple-gradient"></i>List Occupation</a>
+                        </li>
+                        <li>
+                            <a href="/occupation"><i class="fa fa-plus btn-sm purple-gradient"></i>Add new Occupation</a>
+                        </li>
+                        
+                    </ul>
+                </li>
+                 <li>
+                    <a href="#crenauSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-bolt  btn-sm purple-gradient"></i>Crenau</a>
+                    <ul class="collapse list-unstyled" id="crenauSubmenu">
+                        <li>
+                            <a href="/crenau/list"><i class="fa fa-bars btn-sm purple-gradient"></i>List Crenau</a>
+                        </li>
+                        <li>
+                            <a href="/crenau"><i class="fa fa-plus btn-sm purple-gradient"></i>Add Crenau</a>
+                        </li>
+                        
+                    </ul>
+                </li>
+                
+            </ul>
 
-    </ul>
+            
+        </nav>
 
-  </div>
-</nav>
+        <!-- Page Content  -->
+        <div id="content">
 
-    <div class="row">
-        <div class="col-md-8 offset-md-2" style="background: #fff;margin-top: 100px;padding:40px;border-radius: 40px; box-shadow: 30px 30px 10px gray;">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                
+                  
+                    
+                    <button type="button" id="sidebarCollapse" class="btn text-sidebar ">
+                        <i class="fa fa-bars fa-2x btn-sm purple-gradient"></i>
+                        
+                        <span></span>
+                    </button>
+
+                    
+
+                    
+                
+            </nav>
+             
+        <div class="col-md-10 offset-md-1" style="background: hsl(0, 8%, 91%);margin-top: 50px;padding:40px;border-radius: 40px; box-shadow: 30px 30px 10px gray;">
             {{{body}}}
-        </div>
+        
     </div>
 
+            
+    </div>
+
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+    </script>
 </body>
 
-</html>
+    <!-- /#wrapper -->
+
+    <!-- Menu Toggle Script -->
+    
+
+  
+</body>
+<style>
+ 
+
+    
+    
+   
+   
+   body {
+    font-family: 'Poppins', sans-serif;
+    background: #fafafa;
+}
+
+p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #999;
+}
+
+a,
+a:hover,
+a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.navbar {
+    padding: 15px 10px;
+    background: hsl(0, 26%, 54%);
+    border: none;
+    border-radius: 0;
+    margin-bottom: 30px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+
+.line {
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px dashed rgb(163, 112, 112);
+    margin: 40px 0;
+}
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+
+
+
+
+.wrapper {
+    display: flex;
+    width: 100%;
+    
+}
+
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    
+    transition: all 0.05s;
+}
+
+#sidebar.active {
+    margin-left: -250px;
+}
+
+#sidebar .sidebar-header {
+    padding: 20px;
+    
+}
+
+#sidebar ul.components {
+    padding: 20px 0;
+    border-bottom: 1px solid $lila-line;
+}
+
+#sidebar ul p {
+    
+    padding: 10px;
+}
+
+#sidebar ul li a {
+    padding: 10px;
+    font-size: 20px;
+    display: block;
+}
+
+
+
+
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+ul ul a {
+    font-size: 15px !important;
+    padding-left: 30px !important;
+    
+}
+
+ul.CTAs {
+    padding: 20px;
+}
+
+ul.CTAs a {
+    text-align: center;
+    font-size: 0.9em !important;
+    display: block;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+
+
+
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+
+#content {
+    width: 100%;
+    padding: 10px;
+    min-height: 100vh;
+    transition: all 0.3s;
+}
+
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+
+
+</style>

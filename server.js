@@ -11,28 +11,81 @@ const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-ac
 
 const blocController = require('./controllers/blocController');
 const salleController = require('./controllers/salleController');
+const dashboardController = require('./controllers/dashboardController');
 const crenauController = require('./controllers/crenauController');
 const occupationController = require('./controllers/occupationController');
+const mongoose=require('mongoose');
+const Bloc=mongoose.model('Bloc');
+const Salle=mongoose.model('Salle');
 var app = express();
 
 var http = require('http').createServer(app);
 var io = require('socket.io')(http);
 io.on('connection', (socket) => {
     console.log('user connected');
-    const changeStream = Occupation.watch();
-    changeStream.on('change', next => {
-        const resumeToken = changeStream.resumeToken;
-        const operation = next.operationType;
-
-        if (next.operationType === 'insert') {
-            //  console.log(next.fullDocument._idSalle)
-            socket.emit("test",  next.fullDocument.date, next.fullDocument.namesalle, next.fullDocument.crenauhr);
+    
+    var labels=[];
+    var donnees=[];
+    Bloc.find((err, docs) => {
+      docs.forEach(element => {
+     
+        labels.push(element.code);
+        Salle.count({ nameBloc:element.code}, function(err, result) {
+          if (err) {
+            res.send(err);
+          } else {
             
-
-        }
+            donnees.push(result);
+          }
+        });
+      });
     });
-
-})
+    const myTimeout = setTimeout(fun, 1500);
+    var data;
+    function fun() {
+     data = {
+      labels: labels,
+      datasets: [{
+        label: '',
+        backgroundColor:[
+          
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(255, 159, 64, 0.2)',
+          'rgba(255, 205, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+        ],
+        borderColor: [
+          
+          'rgba(54, 162, 235)',
+          'rgba(255, 99, 132)',
+          'rgba(255, 159, 64)',
+          'rgba(255, 205, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+        ],
+        borderWidth: 1,
+        data: donnees,
+      }]
+    };
+    socket.emit("display",data);
+  }
+    
+      const changeStream = Occupation.watch();
+      changeStream.on('change', next => {
+          const resumeToken = changeStream.resumeToken;
+          const operation=next.operationType;
+        
+          if(next.operationType === 'insert') {
+           
+             socket.emit("test",next.fullDocument.date,next.fullDocument.namesalle,next.fullDocument.crenauhr);
+             
+            }
+      });  
+      
+    
+    })
 app.use(bodyparser.urlencoded({
     extended: true
 }));
@@ -48,3 +101,4 @@ app.use('/bloc', blocController);
 app.use('/salle', salleController);
 app.use('/crenau', crenauController);
 app.use('/occupation', occupationController);
+app.use('/dashboard', dashboardController);

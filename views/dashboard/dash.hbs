@@ -1,0 +1,123 @@
+
+<div class="row" style="margin-bottom: 75px;">
+
+  <div class="col-sm-3" >
+    
+    <div class="card" style="background-color: #aba5b1;">
+      <div class="card-body">
+        <h5 class="card-title">Blocs {{viewTitle}}</h5>
+        <center><h5>Total: {{viewTitle}}</h5></center>
+        <a href="/bloc/list" class="  stretched-link"></a>
+        
+      </div>
+    </div>
+    
+  </div>
+  
+  <div class="col-sm-3">
+    <div class="card" style="background-color: #8d65b3;">
+      <div class="card-body">
+        <h5 class="card-title">Salles {{viewTitle1}}</h5>
+        <center><h5>Total: {{viewTitle1}}</h5></center>
+        <a href="/salle/list" class="  stretched-link"></a>
+        
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="card" style="background-color: #b37ae9;">
+      <div class="card-body">
+        <h5 class="card-title">Occupations {{viewTitle2}}</h5>
+        <center><h5>Total: {{viewTitle2}}</h5></center>
+        <a href="/occupation/list" class="  stretched-link"></a>
+        
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="card" style="background-color: #f293f5;">
+      <div class="card-body">
+        <h5 class="card-title">Crenaux  </h5>
+        <center><h5>Total: {{viewTitle3}}</h5></center>
+        <a href="/crenau/list" class="  stretched-link"></a>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.js"
+  integrity="sha512-uLlukEfSLB7gWRBvzpDnLGvzNUluF19IDEdUoyGAtaO0MVSBsQ+g3qhLRL3GTVoEzKpc24rVT6X1Pr5fmsShBg=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  var socket = io();
+  var send = function () {
+    socket.emit('display', "txt");
+  }
+   var receive = function (data) {
+    chartUpdate(data);
+    ///////////////
+    
+  }
+  
+  var chartUpdate = function (data) {
+    const config = {
+      type: 'bar',
+      data,
+      options: {
+        scales: {
+          x: {
+            title: {
+              text: "Les Blocs",
+              display: true
+            }
+          },
+          y: {
+            title: {
+              text: "Les Salles",
+              display: true
+            }
+          }
+        },
+        plugins: {
+          legend: {
+            display: false,
+            position: 'bottom',
+            labels: {
+              fontColor: "#000080",
+            }
+          },
+          title: {
+            display: true,
+            text: 'Salle Par Bloc Chart'
+          },
+
+
+        }
+      }
+    };
+
+    var myChart = new Chart(
+      document.getElementById('myChart'),
+      config
+      
+    );
+    
+  }
+  
+  socket.on('display', chartUpdate);
+</script>
+<center>
+
+  
+  <div class="chart-container" >
+    <canvas id="myChart" style="height:70px; width:150px"></canvas>
+  </div>
+</center>
+<br><br>
+
+</div>
+
